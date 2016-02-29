@@ -30,7 +30,7 @@ class World(object):
     hit_prob = 0.9      # вероятность убить муравья при ударе
     cost_of_ant = 5     # стоимость создания одного муравья
     start_food_multiplier = 3   # на сколько муравьев хватит стартовой еды
-    food_prob = 0.1     # вероятность появления еды в клетке при создании планеты
+    food_prob = 0.3    # вероятность появления еды в клетке при создании планеты
     food_min_start_quantity_in_cell = 3     #магические константы при рандоме еды для размещения в клетку
     food_max_start_quantity_in_cell = 7
 
@@ -64,7 +64,9 @@ class World(object):
         coord_for_bases = sample(self.obj_by_coord, len(teams))
         for base, coord in zip(self.teams_by_base, coord_for_bases):
             API_for_setup = API(world=self)
-            API_for_setup.Init(base)
+            if API_for_setup.get_type_by_coord(coord) != type(None):
+                self.del_obj(self.obj_by_coord[coord])
+            API_for_setup.Init(base)            
             base.Init(API=API_for_setup)
             self.set_obj(obj=base, coord=coord)
 
