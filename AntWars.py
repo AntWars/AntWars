@@ -152,26 +152,30 @@ class World(object):
                 # todo: вставить проверку на то, что муравей не прыгнул дальше одной клетки
                 getattr(self, move)(dst_coord, ant)
 
-    def __str__(self):
-        Buffer = list()
+    def get_field(self):
+        buffer = []
         for y in range(self.size[1]):
+            line = []
             for x in range(self.size[0]):
                 figure = self.obj_by_coord[x, y]
                 label = ' ' if figure == None \
                     else Food.label if isinstance(figure, Food) \
                     else Base.label if isinstance(figure, Base) \
                     else str(figure.base.team_id)
-                Buffer.append(label)
-            Buffer.append('\n')
+                line.append(label)
+            buffer.append(''.join(line))
 
         ext_inf = list()
         for base in self.teams_by_base:
-            ext_inf.append('Team %d: food %d, ants %d\n' %
+            ext_inf.append('Team %d: food %d, ants %d' %
                            (base.team_id,
                             self.teams_by_base[base].food,
                             len(self.teams_by_base[base].ants_set)))
-        Buffer.extend(ext_inf)
-        return "".join(Buffer)
+        buffer.extend(ext_inf)
+        return buffer
+
+    def __str__(self):
+        return "\n".join(self.get_field())
 
 class API(object):
     world = None
