@@ -6,6 +6,7 @@ from datetime import datetime
 
 from AntWars import World, Team
 from BasicStrategy import BasicAnt, BasicBase
+from courses_tools import handle_with_courses
 
 
 def dump(planet, filename):
@@ -26,9 +27,4 @@ if __name__ == '__main__':
     Earth = World(size=tuple(map(int, args.size.split())))
     Earth.Init(teams={team1, team2})
 
-    while True:
-        Earth.advance()
-        print Earth
-        if args.logs_flag:
-            dump(Earth, log_name)
-        sleep(args.delay)
+    handle_with_courses(advancer=Earth.advance, get_field=Earth.get_field, delay=args.delay)
