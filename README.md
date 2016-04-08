@@ -1,6 +1,6 @@
 # AntWars
 
-[![master](https://travis-ci.org/AntWars/AntWars.svg?branch=master)](https://travis-ci.org/AntWars/AntWars) | [![nightly](https://travis-ci.org/AntWars/AntWars.svg?branch=nightly)](https://travis-ci.org/AntWars/AntWars)
+master: [![master](https://travis-ci.org/AntWars/AntWars.svg?branch=master)](https://travis-ci.org/AntWars/AntWars) | nightly: [![nightly](https://travis-ci.org/AntWars/AntWars.svg?branch=nightly)](https://travis-ci.org/AntWars/AntWars)
 
 Пошаговая стратегия.  Муравьи передвигаются, кусаются, ищут еду и задаются вопросами устройства старших гомотопических групп сфер. 
 Вы реализовываете класс "муравей" и класс "муравейник", и они вступают в бой за место под солнцем с созданиями таких же, как вы, программистов.
