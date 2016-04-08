@@ -175,7 +175,7 @@ class gameController:
             while not self.winner_id:
                 self.world.advance()
                 statistics = self.check_winner()
-            return statistics
+            return {'day': self.world.day, 'stat': statistics}
 
     def stopGame(self):
         for stringVar, line in izip(self.statStringVars, self.world.getTeamStatList()):

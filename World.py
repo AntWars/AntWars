@@ -40,6 +40,7 @@ class World(object):
         self.cargo_by_ant = dict()   # по муравью дает его загрузку (едой)
         # хранит инорфмацию об изменении местоположения/удалении
         self.repaint_method_by_obj = dict()
+        self.day = 0
 
         for coord in product(*map(range, self.size)):
             if 0 <= uniform(0, 1) < type(self).food_prob:
@@ -188,6 +189,7 @@ class World(object):
 
         # срабатывает, если при запуске был задан флаг --logs
         self.dump()
+        self.day += 1
 
     def dump(self):
         """ Сбрасывает текущее состояние поля str(world) в файл filename."""
