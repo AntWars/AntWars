@@ -27,6 +27,8 @@ if __name__ == '__main__':
                         default='constructor', help='Theme for graphical interface.')
     parser.add_argument('-a', '--algorithm', type=str, dest='strategies', action='append',
                         help='Specifes one strategy. Use few -a to specify few strategies')
+    # tournament:
+    # python -c "import os; map(lambda t: os.system('python main.py -c -a strategies/BasicStrategy.py -a strategies/BasicStrategy.py --skip-visualization'), range(100))"
     parser.add_argument('--skip-visualization', dest='skip_visualization', action='store_true',
                         help='Skip field visualization and get winner-id.')
 
