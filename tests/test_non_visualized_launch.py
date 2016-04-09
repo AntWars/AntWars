@@ -22,7 +22,7 @@ class TestClass(object):
         result = game.launch()
 
         # successfully complete
-        assert result != -1
+        assert len(result['stat']) == 2
 
     def test_one_strategy(self):
         strat_names = ['strategies/BasicStrategy.py']
@@ -30,7 +30,8 @@ class TestClass(object):
         result = game.launch()
 
         # successfully complete
-        assert len(result) == 1
+        assert len(result) == 2
+        assert len(result['stat']) == 1
 
     def test_zero_strategies(self):
         strat_names = []
@@ -38,4 +39,4 @@ class TestClass(object):
         result = game.launch()
 
         # successfully complete
-        assert result == []
+        assert result == {'day': 0, 'stat': []}
